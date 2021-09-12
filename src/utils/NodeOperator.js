@@ -30,4 +30,17 @@ export default class LinkedList {
 
     this.size++
   }
+
+  // get list of data to be displayed in default order
+  getOrderedList() {
+    let result = []
+    let current = this.head
+
+    while (current) {
+      result.push(current.data)
+      current = current.next
+    }
+
+    return result
+  }
 }
