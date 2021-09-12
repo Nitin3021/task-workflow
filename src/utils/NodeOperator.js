@@ -71,6 +71,10 @@ export default class LinkedList {
     // If the task to be removed is head, then remove it directly
     // else, iterate through the list and find the particular task to be removed.
     if (current.data.id === id) {
+      // Update subsequent task to 'in_progress' if the current task to be removed is also 'in_progress'
+      if (current.next && current.data.status === STATUS_INPROGRESS) {
+        current.next.data.status = STATUS_INPROGRESS
+      }
       this.head = current.next
     } else {
       while (current && previous === null) {
@@ -78,6 +82,9 @@ export default class LinkedList {
           previous = current
         }
         current = current.next
+      }
+      if (current.next && current.data.status === STATUS_INPROGRESS) {
+        current.next.data.status = STATUS_INPROGRESS
       }
       previous.next = current.next
     }

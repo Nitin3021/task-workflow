@@ -1,6 +1,10 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { STATUS_INPROGRESS } from '../constants/status'
+import {
+  STATUS_BLOCKED,
+  STATUS_DONE,
+  STATUS_INPROGRESS
+} from '../constants/status'
 
 const TaskList = ({ data, updateStatus, removeItem }) => {
   return (
@@ -22,6 +26,15 @@ const TaskList = ({ data, updateStatus, removeItem }) => {
                   Done
                 </Button>
               ) : null}
+
+              {item.status === STATUS_DONE ? (
+                <i className='float-right rounded ml-3 fa fa-check fa-5x'></i>
+              ) : null}
+
+              {item.status === STATUS_BLOCKED ? (
+                <i className='float-right rounded ml-3 fa fa-lock fa-5x'></i>
+              ) : null}
+
               <Button
                 className='float-right rounded'
                 type='button'
