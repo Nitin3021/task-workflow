@@ -1,5 +1,9 @@
 import Node from './NodeConstructor'
-import { STATUS_INPROGRESS, STATUS_BLOCKED } from '../constants/status'
+import {
+  STATUS_INPROGRESS,
+  STATUS_BLOCKED,
+  STATUS_DONE
+} from '../constants/status'
 
 export default class LinkedList {
   constructor() {
@@ -18,13 +22,21 @@ export default class LinkedList {
       node = new Node(data)
       this.head = node
     } else {
-      data.status = STATUS_BLOCKED
-      node = new Node(data)
       current = this.head
 
       while (current.next) {
         current = current.next
       }
+
+      // To check whether the last task has already completed or not.
+      if (current.data.status === STATUS_DONE) {
+        data.status = STATUS_INPROGRESS
+      } else {
+        data.status = STATUS_BLOCKED
+      }
+
+      // Build a new node and assign it to the last position
+      node = new Node(data)
       current.next = node
     }
 
@@ -37,7 +49,6 @@ export default class LinkedList {
   // always going to be a sequential update
   updateData(updates) {
     let current = this.head
-    console.log('what')
 
     while (current) {
       if (current.data.status === STATUS_INPROGRESS) {

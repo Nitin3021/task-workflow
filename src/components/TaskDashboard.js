@@ -22,7 +22,6 @@ const TaskDashboard = () => {
   }
 
   const updateStatus = () => {
-    console.log('yes')
     dataList.updateData({
       status: STATUS_DONE
     })
