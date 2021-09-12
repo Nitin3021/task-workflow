@@ -63,6 +63,28 @@ export default class LinkedList {
     }
   }
 
+  // Removing the task (node) by the passed Id
+  removeData(id) {
+    let current = this.head
+    let previous = null
+
+    // If the task to be removed is head, then remove it directly
+    // else, iterate through the list and find the particular task to be removed.
+    if (current.data.id === id) {
+      this.head = current.next
+    } else {
+      while (current && previous === null) {
+        if (current.next.data.id === id) {
+          previous = current
+        }
+        current = current.next
+      }
+      previous.next = current.next
+    }
+
+    this.size--
+  }
+
   // get list of data to be displayed in default order
   getOrderedList() {
     let result = []

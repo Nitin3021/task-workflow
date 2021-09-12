@@ -29,10 +29,20 @@ const TaskDashboard = () => {
     setData(dataList.getOrderedList())
   }
 
+  const removeItem = (id) => {
+    dataList.removeData(id)
+
+    setData(dataList.getOrderedList())
+  }
+
   return (
     <Container>
       <TaskForm addData={addData} />
-      <TaskList data={data} updateStatus={updateStatus} />
+      <TaskList
+        data={data}
+        updateStatus={updateStatus}
+        removeItem={removeItem}
+      />
     </Container>
   )
 }
