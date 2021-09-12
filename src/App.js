@@ -1,9 +1,9 @@
-import TaskForm from './components/TaskForm'
+import TaskDashboard from './components/TaskDashboard'
 
 function App() {
   return (
     <div>
-      <TaskForm />
+      <TaskDashboard />
     </div>
   )
 }
