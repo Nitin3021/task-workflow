@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 
 const TaskForm = () => {
+  // To handle input title
   const [title, setTitle] = useState('')
+  // To handle input description
   const [description, setDescription] = useState('')
 
   const onSubmit = (e) => {
