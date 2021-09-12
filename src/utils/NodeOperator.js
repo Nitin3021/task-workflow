@@ -31,6 +31,27 @@ export default class LinkedList {
     this.size++
   }
 
+  // Update node with passed updates
+  // Since the task is implicitly marked as Done and InProgress,
+  // therefore, not using Task ID as a parameter to check as it is
+  // always going to be a sequential update
+  updateData(updates) {
+    let current = this.head
+    console.log('what')
+
+    while (current) {
+      if (current.data.status === STATUS_INPROGRESS) {
+        current.data.status = updates.status
+        if (current.next) {
+          current = current.next
+          current.data.status = STATUS_INPROGRESS
+        }
+        return
+      }
+      current = current.next
+    }
+  }
+
   // get list of data to be displayed in default order
   getOrderedList() {
     let result = []
