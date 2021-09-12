@@ -1,8 +1,11 @@
+import TaskForm from './components/TaskForm'
+
 function App() {
   return (
-    <div className="App">
+    <div>
+      <TaskForm />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
