@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
+import { STATUS_INPROGRESS } from '../constants/status'
 
 const TaskList = ({ data }) => {
   console.log(data)
@@ -7,8 +8,17 @@ const TaskList = ({ data }) => {
     <div>
       {data.length > 0 &&
         data.map((item) => (
-          <Card key={item.id}>
-            {item.id} -- {item.title}-{item.description}
+          <Card className='mb-3' key={item.id}>
+            <Card.Header>Task Id: {item.id}</Card.Header>
+            <Card.Body>
+              <Card.Title>{item.title}</Card.Title>
+              <Card.Text>{item.description}</Card.Text>
+              {item.status === STATUS_INPROGRESS ? (
+                <Button className='float-right rounded' type='button'>
+                  Done
+                </Button>
+              ) : null}
+            </Card.Body>
           </Card>
         ))}
     </div>

@@ -35,7 +35,7 @@ const TaskForm = ({ addData }) => {
         ></Form.Control>
       </Form.Group>
 
-      <Button type='submit' variant='primary'>
+      <Button className="mb-3 rounded" type='submit' variant='primary' >
         Add
       </Button>
     </Form>
