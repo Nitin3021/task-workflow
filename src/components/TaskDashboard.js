@@ -5,6 +5,8 @@ import TaskForm from './TaskForm'
 import TaskList from './TaskList'
 import { Container } from 'react-bootstrap'
 import { STATUS_DONE } from '../constants/status'
+import TaskFilter from './TaskFilter'
+import { SELECT_REVERSE_TASK } from '../constants/selectOption'
 
 const dataList = new LinkedList()
 
@@ -35,9 +37,17 @@ const TaskDashboard = () => {
     setData(dataList.getOrderedList())
   }
 
+  const sortByOption = (sortBy) => {
+    if (sortBy === SELECT_REVERSE_TASK) {
+      setData(dataList.reverseOrder())
+      console.log('reversed')
+    }
+  }
+
   return (
     <Container>
       <TaskForm addData={addData} />
+      <TaskFilter sortByOption={sortByOption} />
       <TaskList
         data={data}
         updateStatus={updateStatus}

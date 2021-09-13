@@ -104,4 +104,36 @@ export default class LinkedList {
 
     return result
   }
+
+  // Reverse the list order. This will not alter the original linkedlist
+  // And return a new linked list instead
+  reverseOrder() {
+    if (!this.head) {
+      return
+    }
+
+    let current = this.head
+    let previous = null
+    let temp = null
+    let result = []
+
+    while (current) {
+      let newNode = new Node(current.data)
+      temp = newNode.next
+      newNode.next = previous
+      previous = newNode
+      newNode = temp
+      current = current.next
+    }
+
+    // return the result back to display
+    current = previous
+
+    while (current) {
+      result.push(current.data)
+      current = current.next
+    }
+
+    return result
+  }
 }
