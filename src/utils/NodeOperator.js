@@ -162,4 +162,19 @@ export default class LinkedList {
 
     return result
   }
+
+  searchById(inputId) {
+    let current = this.head
+    let result = []
+
+    while (current && result.length === 0) {
+      if (current.data.id === inputId) {
+        result.push(current.data)
+      } else {
+        current = current.next
+      }
+    }
+
+    return result
+  }
 }

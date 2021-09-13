@@ -53,10 +53,26 @@ const TaskDashboard = () => {
     }
   }
 
+  const onSearchById = (id, selectOption) => {
+    const searchResult = dataList.searchById(id)
+
+    if (searchResult.length > 0) {
+      setData(searchResult)
+    } else {
+      sortByOption(selectOption)
+    }
+  }
+
+  const onSearchByKeyword = (keyword) => {}
+
   return (
     <Container>
       <TaskForm addData={addData} />
-      <TaskFilter sortByOption={sortByOption} />
+      <TaskFilter
+        sortByOption={sortByOption}
+        onSearchById={onSearchById}
+        onSearchByKeyword={onSearchByKeyword}
+      />
       <TaskList
         data={data}
         updateStatus={updateStatus}
