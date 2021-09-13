@@ -163,6 +163,7 @@ export default class LinkedList {
     return result
   }
 
+  // Search by given ID as a parameter
   searchById(inputId) {
     let current = this.head
     let result = []
@@ -173,6 +174,24 @@ export default class LinkedList {
       } else {
         current = current.next
       }
+    }
+
+    return result
+  }
+
+  // Search by given keyword as a parameter & performed in lowercase.
+  searchByKeyword(keyword) {
+    let current = this.head
+    let result = []
+
+    while (current) {
+      if (
+        current.data.title.toLowerCase().includes(keyword.toLowerCase()) ||
+        current.data.description.toLowerCase().includes(keyword.toLowerCase())
+      ) {
+        result.push(current.data)
+      }
+      current = current.next
     }
 
     return result

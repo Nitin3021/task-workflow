@@ -8,8 +8,11 @@ import {
 } from '../constants/selectOption'
 
 const TaskFilter = ({ sortByOption, onSearchById, onSearchByKeyword }) => {
+  // Controls select option used for sorting
   const [selectOption, setSelectOption] = useState(SELECT_DEFAULT_VIEW)
+  // Controls search by id input field
   const [searchId, setSearchId] = useState('')
+  // Controls search by keyword input field
   const [searchByKeyword, setSearchByKeyword] = useState('')
 
   const onOptionChange = (e) => {
@@ -21,7 +24,7 @@ const TaskFilter = ({ sortByOption, onSearchById, onSearchByKeyword }) => {
   const onSearchIdChange = (e) => {
     setSearchId(e.target.value)
 
-    onSearchById(e.target.value, selectOption)
+    onSearchById(e.target.value)
   }
 
   const onSearchKeywordChange = (e) => {
