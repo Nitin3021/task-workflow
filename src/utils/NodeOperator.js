@@ -115,6 +115,22 @@ export default class LinkedList {
     return result
   }
 
+  // Return last task from the list
+  showLastData() {
+    let result = []
+    if (!this.head) {
+      return result
+    }
+    let current = this.head
+    while (current.next) {
+      current = current.next
+    }
+
+    result.push(current.data)
+
+    return result
+  }
+
   // Reverse the list order. This will not alter the original linkedlist
   // And return a new linked list instead
   reverseOrder() {

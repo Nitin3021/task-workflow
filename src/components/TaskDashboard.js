@@ -6,7 +6,11 @@ import TaskList from './TaskList'
 import { Container } from 'react-bootstrap'
 import { STATUS_DONE } from '../constants/status'
 import TaskFilter from './TaskFilter'
-import { SELECT_FIRST_TASK, SELECT_REVERSE_TASK } from '../constants/selectOption'
+import {
+  SELECT_FIRST_TASK,
+  SELECT_LAST_TASK,
+  SELECT_REVERSE_TASK
+} from '../constants/selectOption'
 
 const dataList = new LinkedList()
 
@@ -40,8 +44,12 @@ const TaskDashboard = () => {
   const sortByOption = (sortBy) => {
     if (sortBy === SELECT_FIRST_TASK) {
       setData(dataList.showFirstData())
+    } else if (sortBy === SELECT_LAST_TASK) {
+      setData(dataList.showLastData())
     } else if (sortBy === SELECT_REVERSE_TASK) {
       setData(dataList.reverseOrder())
+    } else {
+      setData(dataList.getOrderedList())
     }
   }
 
