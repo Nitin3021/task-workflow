@@ -19,18 +19,22 @@ const TaskFilter = ({ sortByOption, onSearchById, onSearchByKeyword }) => {
     setSelectOption(e.target.value)
 
     sortByOption(e.target.value)
+    setSearchId('')
+    setSearchByKeyword('')
   }
 
   const onSearchIdChange = (e) => {
     setSearchId(e.target.value)
 
     onSearchById(e.target.value)
+    setSearchByKeyword('')
   }
 
   const onSearchKeywordChange = (e) => {
     setSearchByKeyword(e.target.value)
 
     onSearchByKeyword(e.target.value)
+    setSearchId('')
   }
 
   return (
@@ -53,6 +57,7 @@ const TaskFilter = ({ sortByOption, onSearchById, onSearchByKeyword }) => {
         <Form.Group controlId='title'>
           <Form.Control
             type='text'
+            className='mb-3'
             placeholder='Search by Task Id'
             value={searchId}
             onChange={onSearchIdChange}
@@ -64,6 +69,7 @@ const TaskFilter = ({ sortByOption, onSearchById, onSearchByKeyword }) => {
         <Form.Group controlId='title'>
           <Form.Control
             type='text'
+            className='mb-3'
             placeholder='Search by Keyword'
             value={searchByKeyword}
             onChange={onSearchKeywordChange}

@@ -86,7 +86,7 @@ const TaskDashboard = () => {
   }
 
   return (
-    <Container>
+    <>
       <TaskForm addData={addData} />
       <TaskFilter
         sortByOption={sortByOption}
@@ -98,7 +98,7 @@ const TaskDashboard = () => {
         updateStatus={updateStatus}
         removeItem={removeItem}
       />
-    </Container>
+    </>
   )
 }
 

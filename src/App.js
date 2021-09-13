@@ -1,10 +1,15 @@
+import { Container } from 'react-bootstrap'
+import Header from './components/Header'
 import TaskDashboard from './components/TaskDashboard'
 
 function App() {
   return (
-    <div>
-      <TaskDashboard />
-    </div>
+    <>
+      <Header />
+      <Container>
+        <TaskDashboard />
+      </Container>
+    </>
   )
 }
 

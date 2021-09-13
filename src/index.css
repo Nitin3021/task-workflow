@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.selectForm {
+  padding: 0.75rem 0.2rem;
+}
+
+.header {
+  background: #008aab;
+  border-bottom-left-radius: 2rem;
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.8;
+}
+
+.header__title {
+  color: white;
+  display: flex;
+  margin: 0.1rem;
+  text-decoration: none;
+}
+
+.header__logo {
+  height: auto;
+  margin-top: 0.5rem;
+  max-height: 2.5rem;
+  max-width: 2.5rem;
+  width: auto;
+}
