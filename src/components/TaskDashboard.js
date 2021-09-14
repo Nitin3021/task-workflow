@@ -3,9 +3,8 @@ import { randomBytes } from 'crypto'
 import LinkedList from '../utils/NodeOperator'
 import TaskForm from './TaskForm'
 import TaskList from './TaskList'
-import { Container } from 'react-bootstrap'
-import { STATUS_DONE } from '../constants/status'
 import TaskFilter from './TaskFilter'
+import { STATUS_DONE } from '../constants/status'
 import {
   SELECT_DEFAULT_VIEW,
   SELECT_FIRST_TASK,
@@ -19,6 +18,7 @@ const TaskDashboard = () => {
   // To store state of data
   const [data, setData] = useState([])
   const [currentSort, setCurrentSort] = useState(SELECT_DEFAULT_VIEW)
+  const [searchKeyword, setSearchKeyword] = useState('')
 
   // Add the given task in the list
   const addData = (title, description) => {
@@ -63,7 +63,7 @@ const TaskDashboard = () => {
 
   // Search the list by ID
   // If no result -> display list as it is
-  const onSearchById = (id, selectOption) => {
+  const onSearchById = (id) => {
     const searchResult = dataList.searchById(id)
 
     if (searchResult.length > 0) {
@@ -75,19 +75,18 @@ const TaskDashboard = () => {
 
   // Search the list by keyword
   // If no result -> list will be empty
-  const onSearchByKeyword = (keyword, selectOption) => {
-    const searchResult = dataList.searchByKeyword(keyword)
-
+  const onSearchByKeyword = (keyword) => {
+    setSearchKeyword(keyword)
     if (keyword.length === 0) {
       sortByOption(currentSort)
     } else {
-      setData(searchResult)
+      setData(dataList.searchByKeyword(keyword))
     }
   }
 
   return (
     <>
-      <TaskForm addData={addData} />
+      <TaskForm addData={addData} isKeySearch={searchKeyword.length > 0} />
       <TaskFilter
         sortByOption={sortByOption}
         onSearchById={onSearchById}

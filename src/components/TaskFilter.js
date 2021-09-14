@@ -47,7 +47,7 @@ const TaskFilter = ({ sortByOption, onSearchById, onSearchByKeyword }) => {
           onChange={onOptionChange}
         >
           <option value={SELECT_DEFAULT_VIEW}>Default view</option>
-          <option value={SELECT_FIRST_TASK}>Show Only first task</option>
+          <option value={SELECT_FIRST_TASK}>Show only first task</option>
           <option value={SELECT_LAST_TASK}>Show only last task</option>
           <option value={SELECT_REVERSE_TASK}>Reverse tasks order</option>
         </Form.Control>

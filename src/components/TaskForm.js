@@ -1,16 +1,25 @@
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Alert, Button, Form } from 'react-bootstrap'
 
-const TaskForm = ({ addData }) => {
+const TaskForm = ({ addData, isKeySearch }) => {
   // To handle input title
   const [title, setTitle] = useState('')
   // To handle input description
   const [description, setDescription] = useState('')
+  // To handle errors
+  const [error, setError] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
 
+    if (title.length === 0) {
+      return setError('Title is required')
+    }
+
     addData(title, description)
+    setTitle('')
+    setDescription('')
+    setError('')
   }
 
   return (
@@ -35,9 +44,15 @@ const TaskForm = ({ addData }) => {
         ></Form.Control>
       </Form.Group>
 
-      <Button className="mb-3 rounded" type='submit' variant='primary' >
+      <Button
+        className='mb-3 rounded'
+        type='submit'
+        variant='primary'
+        disabled={isKeySearch}
+      >
         Add
       </Button>
+      {error && <Alert variant='danger'>{error}</Alert>}
     </Form>
   )
 }

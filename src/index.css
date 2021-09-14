@@ -38,3 +38,21 @@ code {
   max-width: 2.5rem;
   width: auto;
 }
+
+.stepCounter {
+  color: red;
+  text-align: center;
+  height: auto;
+  margin: 1rem;
+}
+
+@media (max-width: 900px) {
+  .header__title h1 {
+    font-size: 7vw;
+  }
+
+  .header__title img {
+    max-height: 7vw;
+    max-width: 7vw;
+  }
+}

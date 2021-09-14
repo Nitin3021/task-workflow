@@ -1,4 +1,5 @@
 import Node from './NodeConstructor'
+import { randomBytes } from 'crypto'
 import {
   STATUS_INPROGRESS,
   STATUS_BLOCKED,
@@ -134,14 +135,15 @@ export default class LinkedList {
   // Reverse the list order. This will not alter the original linkedlist
   // And return a new linked list instead
   reverseOrder() {
+    let result = []
+
     if (!this.head) {
-      return
+      return result
     }
 
     let current = this.head
     let previous = null
     let temp = null
-    let result = []
 
     while (current) {
       let newNode = new Node(current.data)
@@ -183,14 +185,31 @@ export default class LinkedList {
   searchByKeyword(keyword) {
     let current = this.head
     let result = []
+    let stepCounter = 0
 
     while (current) {
       if (
         current.data.title.toLowerCase().includes(keyword.toLowerCase()) ||
         current.data.description.toLowerCase().includes(keyword.toLowerCase())
       ) {
+        result.push({
+          id: randomBytes(5).toString('hex'),
+          stepCounter
+        })
+        stepCounter = 0
         result.push(current.data)
+      } else {
+        stepCounter++
+
+        // check for last tasks, if not found under selection
+        if (!current.next) {
+          result.push({
+            id: randomBytes(5).toString('hex'),
+            stepCounter
+          })
+        }
       }
+
       current = current.next
     }
 
