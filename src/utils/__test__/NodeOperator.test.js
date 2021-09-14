@@ -79,10 +79,9 @@ it('gets ordered task list in an array', () => {
   dataList.addData(userOne)
   dataList.addData(userTwo)
 
-  // orders task
+  // gets task in ordered list
   const value = dataList.getOrderedList()
 
-  // second task gets deleted. So third task takes place of second. Third task must not exist thereafter.
   expect(dataList.size).toEqual(2)
   expect(value).toHaveLength(2)
   expect(value[0].id).toEqual(userOne.id)
@@ -97,7 +96,6 @@ it('gets only first task from the list', () => {
   // gets only first task
   const value = dataList.showFirstData()
 
-  // second task gets deleted. So third task takes place of second. Third task must not exist thereafter.
   expect(dataList.size).toEqual(3)
   expect(value).toHaveLength(1)
   expect(value[0].id).toEqual(userOne.id)
@@ -112,7 +110,6 @@ it('gets only last task from the list', () => {
   // gets only last task
   const value = dataList.showLastData()
 
-  // second task gets deleted. So third task takes place of second. Third task must not exist thereafter.
   expect(dataList.size).toEqual(3)
   expect(value).toHaveLength(1)
   expect(value[0].id).toEqual(userThree.id)
@@ -127,7 +124,6 @@ it('reverses the tasks order', () => {
   // reverses Order
   const value = dataList.reverseOrder()
 
-  // second task gets deleted. So third task takes place of second. Third task must not exist thereafter.
   expect(dataList.size).toEqual(3)
   expect(value).toHaveLength(3)
   expect(value[0].id).toEqual(userThree.id)
@@ -155,7 +151,7 @@ it('searches the task by Keyword', () => {
   dataList.addData(userTwo)
   dataList.addData(userThree)
 
-  // search by Id
+  // search by Keyword
   const value = dataList.searchByKeyword(keyword)
 
   expect(dataList.size).toEqual(3)
